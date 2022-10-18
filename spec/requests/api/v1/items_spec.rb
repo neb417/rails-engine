@@ -43,6 +43,7 @@ RSpec.describe 'Items API' do
 
     it 'returns successful connection' do
       expect(response).to be_successful
+      expect(response).to eq(200)
     end
 
     it 'pass correct JSON format' do
@@ -63,6 +64,28 @@ RSpec.describe 'Items API' do
       expect(item[:attributes][:unit_price]).to be_a(Float)
       expect(item[:attributes]).to have_key(:merchant_id)
       expect(item[:attributes][:merchant_id]).to be_a(Integer)
+    end
+  end
+
+  describe 'POST an item' do
+    it 'posts to items' do
+      merchant = create(:merchant)
+
+      item_params = ({
+        name: 'Thingy',
+        description: 'Does a thing',
+        unit_price: 12.34,
+        merchant_id: merchant.id
+      })
+
+      headers = {"CONTENT_TYPE" => 'application/json'}
+
+      post api_v1_items_path, headers: headers, params: JSON.generate(item: item_params)
+
+      item = Item.last
+binding.pry
+      expect(response).to be_successful
+      expect(response.status).to eq(201)
     end
   end
 end
