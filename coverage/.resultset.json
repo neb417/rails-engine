@@ -20,7 +20,6 @@
           null,
           1,
           2,
-          2,
           null,
           null,
           1,
@@ -31,6 +30,14 @@
       },
       "/Users/benjaminrandolph/turing/3mod/projects/rails-engine/app/controllers/application_controller.rb": {
         "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/benjaminrandolph/turing/3mod/projects/rails-engine/app/serializers/merchant_serializer.rb": {
+        "lines": [
+          1,
+          1,
           1,
           null
         ]
@@ -74,6 +81,6 @@
         }
       }
     },
-    "timestamp": 1666058934
+    "timestamp": 1666099698
   }
 }
