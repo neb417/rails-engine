@@ -10,6 +10,7 @@ RSpec.describe "Merchant's Items API" do
 
   it 'returns successful response' do
     expect(response).to be_successful
+    expect(response.status).to eq(200)
   end
 
   it 'returns API in JSON format' do

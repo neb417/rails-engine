@@ -11,6 +11,7 @@ RSpec.describe "Merchants API" do
 
     it 'response is successful' do
       expect(response).to be_successful
+      expect(response.status).to eq(200)
     end
 
     it 'has correct count of merchants and attributes' do
@@ -35,6 +36,7 @@ RSpec.describe "Merchants API" do
 
     it 'response is successful' do
       expect(response).to be_successful
+      expect(response.status).to eq(200)
     end
 
     it 'requests only one merchant' do
