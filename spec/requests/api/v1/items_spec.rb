@@ -43,7 +43,7 @@ RSpec.describe 'Items API' do
 
     it 'returns successful connection' do
       expect(response).to be_successful
-      expect(response).to eq(200)
+      expect(response.status).to eq(200)
     end
 
     it 'pass correct JSON format' do
@@ -83,7 +83,7 @@ RSpec.describe 'Items API' do
       post api_v1_items_path, headers: headers, params: JSON.generate(item: item_params)
 
       item = Item.last
-binding.pry
+
       expect(response).to be_successful
       expect(response.status).to eq(201)
     end
