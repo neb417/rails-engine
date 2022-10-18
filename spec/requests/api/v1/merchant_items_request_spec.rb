@@ -20,7 +20,7 @@ RSpec.describe "Merchant's Items API" do
       expect(item[:id]).to be_a(String)
       expect(item).to have_key(:type)
       expect(item[:type]).to be_a(String)
-      expect(item[:type]).to be_eq('item')
+      expect(item[:type]).to eq('item')
       expect(item).to have_key(:attributes)
       expect(item[:attributes]).to be_a(Hash)
       expect(item[:attributes]).to have_key(:name)
