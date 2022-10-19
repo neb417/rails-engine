@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Non-ReSTful API' do
+RSpec.describe 'Non-ReSTful find merchant API' do
   let!(:merchant_list) { create_list(:merchant, 10) }
 
   it 'response is succcessful' do
