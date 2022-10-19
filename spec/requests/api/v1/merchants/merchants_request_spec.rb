@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Merchants API" do
-  let!(:merchant_list) {create_list(:merchant, 10)}
-  let!(:merchant1) {merchant_list.first}
+RSpec.describe 'Merchants API' do
+  let!(:merchant_list) { create_list(:merchant, 10) }
+  let!(:merchant1) { merchant_list.first }
 
   describe 'merchants index' do
     before(:each) do
