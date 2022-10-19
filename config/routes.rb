@@ -8,7 +8,8 @@ Rails.application.routes.draw do
       end
 
       resources :items do
-        # resources :merchants, only: :show
+        # resources :merchants, only: :show, controller: 'item_merchants'
+        get '/merchant', to: 'item_merchants#show'
       end
     end
   end
