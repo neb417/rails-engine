@@ -18,5 +18,6 @@ RSpec.describe 'Updating Item' do
 
     expect(response).to be_successful
     expect(response.status).to eq(200)
+    expect(Item.all.first.name).to eq(item_params[:name])
   end
 end
