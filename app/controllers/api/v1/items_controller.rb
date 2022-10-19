@@ -13,8 +13,7 @@ class Api::V1::ItemsController < ApplicationController
     if item.save
       render json: ItemSerializer.new(item), status: :created
     else
-      # binding.pry
-      render json_errors: item.errors, status: :bad_request
+      render json: item.errors, status: :bad_request
     end
   end
 
