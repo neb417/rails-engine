@@ -4,13 +4,6 @@ class Merchant < ApplicationRecord
   validates :name, presence: true
 
   def self.find_by_name(name_param)
-    merchant = where('lower(name) ILIKE ?', "%#{name_param.downcase}%").order(:name).first
-
-    # if merchant.nil?
-    #   # binding.pry
-    #   merchant.class
-    # else
-    #   merchant
-    # end
+    where('lower(name) ILIKE ?', "%#{name_param.downcase}%").order(:name).first
   end
 end
