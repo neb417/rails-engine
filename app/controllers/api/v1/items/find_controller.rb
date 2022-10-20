@@ -26,26 +26,22 @@ class Api::V1::Items::FindController < ApplicationController
 
   def find_name
     items = Item.find_by_name(params[:name])
-    all_or_one(items)
-    items_logic(items)
+    items_logic(all_or_one(items))
   end
 
   def find_min_price
     items = Item.find_by_min_price(params[:min_price])
-    all_or_one(items)
-    negative_evaluation(items)
+    negative_evaluation(all_or_one(items))
   end
 
   def find_max_price
     items = Item.find_by_max_price(params[:max_price])
-    all_or_one(items)
-    negative_evaluation(items)
+    negative_evaluation(all_or_one(items))
   end
 
   def find_range
     items = Item.find_by_price_range(params[:min_price], params[:max_price])
-    all_or_one(items)
-    negative_evaluation(items)
+    negative_evaluation(all_or_one(items))
   end
 
   def items_logic(items)
@@ -70,6 +66,14 @@ class Api::V1::Items::FindController < ApplicationController
 
   def all_or_one(items)
     if params[:action] == 'find_all'
+      items
+    else
+      error_or_not(items)
+    end
+  end
+
+  def error_or_not(items)
+    if items.first.class == Array
       items
     else
       items.first

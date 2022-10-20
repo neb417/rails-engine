@@ -13,7 +13,7 @@ RSpec.describe Merchant do
     let!( :merchant_list ) { create_list(:merchant, 5) }
 
     it '#find_by_name' do
-      expect(Merchant.find_by_name('e')).to be_a(Merchant)
+      expect(Merchant.find_by_name('e').first).to be_a(Merchant)
     end
   end
 end
