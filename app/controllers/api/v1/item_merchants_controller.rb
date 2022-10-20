@@ -6,8 +6,7 @@ class Api::V1::ItemMerchantsController < ApplicationController
     if Merchant.find(merchant_id)
       render json: MerchantSerializer.new(Merchant.find(merchant_id))
     else
-      render json: { error: 'Item not Found' }, status: :not_found
-      render json: { error: 'Merchant not Found' }, status: :not_found
+      render json: { data: { error: 'Merchant not Found' } }, status: 404
     end
   end
 end
