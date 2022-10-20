@@ -1,4 +1,4 @@
-class Api::V1::FindItemsController < ApplicationController
+class Api::V1::Items::FindController < ApplicationController
 
   def find_all
     if params[:name]
