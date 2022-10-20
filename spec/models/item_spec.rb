@@ -12,12 +12,25 @@ RSpec.describe Item do
   end
 
   describe 'class methods' do
-    let!( :item_list ) { create_list(:item, 15) }
+    let!(:item_list) { create_list(:item, 15) }
 
-    it '#find_by_name' do
+    it '#find_all_by_name' do
       items = Item.find_all_by_name('in')
 
-      expect(items.count).to_not eq(Item.all.count)
+      expect(items.count).to be < Item.all.count
+
+      items.each do |item|
+        expect(item.id).to be_an(Integer)
+        expect(item.name).to be_a(String)
+        expect(item.unit_price).to be_a(Float)
+        expect(item.merchant_id).to be_an(Integer)
+      end
+    end
+
+    it '#find_all_by_min_price' do
+      items = Item.find_all_by_min_price(140.0)
+
+      expect(items.count).to be < Item.all.count
 
       items.each do |item|
         expect(item.id).to be_an(Integer)

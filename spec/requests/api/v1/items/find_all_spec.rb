@@ -12,7 +12,7 @@ RSpec.describe 'Non_ReSTful find_all items' do
     expect(response.status).to eq(200)
   end
 
-  it 'returns items' do
+  it 'returns items by name' do
     find_params = { name: 'in' }
 
     get api_v1_items_find_all_path, params: find_params
@@ -36,5 +36,27 @@ RSpec.describe 'Non_ReSTful find_all items' do
       expect(item[:attributes]).to have_key(:merchant_id)
       expect(item[:attributes][:merchant_id]).to be_a(Integer)
     end
+  end
+
+  it 'returns items by min_price' do
+    min_price = { min_price: 140.0}
+    get api_v1_items_find_all_path, params: min_price
+
+    items = JSON.parse(response.body, symbolize_names: true)[:data]
+
+    expect(response).to be_successful
+    expect(response.status).to eq(200)
+    expect(items.count).to be < Item.all.count
+  end
+
+  it 'returns items by max_price' do
+    max_price = { max_price: 140.0}
+    get api_v1_items_find_all_path, params: max_price
+
+    items = JSON.parse(response.body, symbolize_names: true)[:data]
+
+    expect(response).to be_successful
+    expect(response.status).to eq(200)
+    expect(items.count).to be < Item.all.count
   end
 end
