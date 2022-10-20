@@ -25,9 +25,10 @@ RSpec.describe 'Merchant Show API' do
       expect(merchant[:attributes][:name]).to be_a(String)
     end
 
-    xit 'edge case: returns 404' do
-      get api_v1_merchant_path(merchant_list.last[:id].to_s)
+    it 'edge case: returns 404' do
+      get '/api/v1/merchants/string'
 
+      expect(response).to_not be_successful
       expect(response.status).to eq(404)
     end
   end

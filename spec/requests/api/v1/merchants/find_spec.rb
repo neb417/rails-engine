@@ -27,7 +27,7 @@ RSpec.describe 'Non-ReSTful find merchant API' do
     expect(merchant[:attributes][:name]).to be_a(String)
   end
 
-  it 'returns 1 merchant with correct attributes' do
+  it 'returns object merchant is not found' do
     find_params = {name: 'XZ'}
 
     get api_v1_merchants_find_path, params: find_params
