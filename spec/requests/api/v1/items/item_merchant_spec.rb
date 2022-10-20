@@ -21,8 +21,8 @@ RSpec.describe 'Item Merchant' do
     expect(merchant[:attributes][:name]).to be_an(String)
   end
 
-  xit 'returns 404 when not found' do
-    get api_v1_item_merchant_path(item_list.last.id + 1)
+  it 'edge case: returns 404 when not found' do
+    get '/api/v1/items/string/merchant'
 
     expect(response).to_not be_successful
     expect(response.status).to eq(404)

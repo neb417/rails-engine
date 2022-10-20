@@ -22,7 +22,7 @@ class Api::V1::ItemsController < ApplicationController
     if item.update(item_params)
       render json: ItemSerializer.new(Item.find(params[:id]))
     else
-      render json: item.errors, status: :bad_request
+      render json: item.errors, status: 400
     end
   end
 
